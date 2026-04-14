@@ -11,7 +11,7 @@ import os
 # Load from Streamlit secrets
 groq_api = st.secrets["groq_api"]
 mongo_db = st.secrets["mongo_db"]
-
+print(groq_api,mongo_db)
 # Set API key for Groq
 os.environ["GROQ_API_KEY"] = groq_api
 # load_dotenv()
