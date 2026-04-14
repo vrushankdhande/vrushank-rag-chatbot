@@ -5,10 +5,15 @@ from pymongo import MongoClient
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from dotenv import load_dotenv
 import streamlit as st
+import streamlit as st
+import os
 
-mongo_db = st.secrets["mongo_db"]
+# Load from Streamlit secrets
 groq_api = st.secrets["groq_api"]
+mongo_db = st.secrets["mongo_db"]
 
+# Set API key for Groq
+os.environ["GROQ_API_KEY"] = groq_api
 # load_dotenv()
 
 # os.environ["GROQ_API_KEY"] = os.getenv("groq_api")
