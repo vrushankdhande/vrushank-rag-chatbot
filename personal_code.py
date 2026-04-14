@@ -5,7 +5,6 @@ from pymongo import MongoClient
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from dotenv import load_dotenv
 import streamlit as st
-import streamlit as st
 import os
 
 # Load from Streamlit secrets
