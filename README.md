@@ -4,6 +4,8 @@ An intelligent **Retrieval-Augmented Generation (RAG)** chatbot that answers que
 
 Built using **LangChain, Groq LLM, HuggingFace Embeddings, and Streamlit**, this project demonstrates a complete end-to-end GenAI pipeline.
 
+An end-to-end Retrieval-Augmented Generation (RAG) chatbot that delivers accurate, context-aware answers by leveraging custom knowledge stored in MongoDB. Built with LangChain, Groq LLM, and HuggingFace embeddings, it combines semantic search with high-speed inference to create a scalable and interactive GenAI application using Streamlit.
+
 ---
 
 ## 🚀 Features
