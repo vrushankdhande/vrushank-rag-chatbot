@@ -3,6 +3,7 @@
 An intelligent **Retrieval-Augmented Generation (RAG)** chatbot that delivers accurate, context-aware answers by leveraging custom knowledge stored in MongoDB.
 
 Built using **LangChain, Groq LLM, HuggingFace Embeddings, and Streamlit**, this project demonstrates a complete end-to-end **GenAI pipeline**, combining semantic search with high-speed inference to create a scalable and interactive chatbot experience.
+
 ---
 
 ## 🚀 Features
