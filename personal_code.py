@@ -37,10 +37,16 @@ llm = ChatGroq(
 )
 
 # Connect to your MongoDB deployment
-client = MongoClient(mongo_db)
 
 embedding = HuggingFaceEmbeddings(
     model_name="sentence-transformers/all-MiniLM-L6-v2"
+)
+
+client = MongoClient(
+    mongo_db,
+    tls=True,
+    tlsAllowInvalidCertificates=True,
+    serverSelectionTimeoutMS=5000
 )
 
 collection =  client["sample_mflix"]["personalpdf"]
