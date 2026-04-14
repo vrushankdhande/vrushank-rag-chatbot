@@ -4,11 +4,15 @@ from langchain_groq import ChatGroq
 from pymongo import MongoClient
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from dotenv import load_dotenv
+import streamlit as st
 
-load_dotenv()
+mongo_db = st.secrets["mongo_db"]
+groq_api = st.secrets["groq_api"]
 
-os.environ["GROQ_API_KEY"] = os.getenv("groq_api")
-mongo_db = os.getenv("mongo_db")
+# load_dotenv()
+
+# os.environ["GROQ_API_KEY"] = os.getenv("groq_api")
+# mongo_db = os.getenv("mongo_db")
 
 if not os.getenv("groq_api"):
     print("GROQ_API_KEY is not set in environment variables.")
