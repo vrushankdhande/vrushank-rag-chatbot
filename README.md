@@ -50,10 +50,9 @@ vrushank-rag-chatbot/
 ├── streamlit_runner.py
 ├── requirements.txt
 ├── .env.example
-├── assets/
-│   └── architecture.png
-├── images/
-│   └── vrushank_image.jpg
+├── .streamlit/
+│   └── config.toml
+├── vrushank_image.jpg
 └── README.md
 ```
 
