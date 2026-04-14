@@ -4,11 +4,15 @@ from langchain_groq import ChatGroq
 from pymongo import MongoClient
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from dotenv import load_dotenv
+from pymongo import MongoClient
+import streamlit as st
 
 load_dotenv()
 
 os.environ["GROQ_API_KEY"] = os.getenv("groq_api")
 mongo_db = os.getenv("mongo_db")
+client = MongoClient(st.secrets["mongo_db"])
+st.write(client.list_database_names())
 
 
 if not os.getenv("groq_api"):
