@@ -1,0 +1,14 @@
+pandas
+langchain-openai
+langchain-groq
+langchain
+langchain-community
+beautifulsoup4
+selenium
+unstructured
+sentence-transformers
+chromadb
+torchvision
+streamlit
+python-dotenv
+pymongo
