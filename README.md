@@ -14,6 +14,7 @@ Built using **LangChain, Groq LLM, HuggingFace Embeddings, and Streamlit**, this
 - 🗄️ MongoDB Atlas vector search integration  
 - 💬 Interactive chatbot UI with chat history  
 - 💡 Predefined smart suggestions  
+- 🧠 Short conversation memory (follow-up questions work)  
 
 ---
 
@@ -46,12 +47,24 @@ Built using **LangChain, Groq LLM, HuggingFace Embeddings, and Streamlit**, this
 ```
 vrushank-rag-chatbot/
 │
-├── personal_code.py
-├── streamlit_runner.py
+├── personal_code.py        # RAG logic: retrieval (MongoDB vector search) + Groq LLM
+├── streamlit_runner.py     # entry point: theme, background, sidebar, page routing
+├── insights.py             # cached read-only queries feeding the dashboard
+├── profile_info.py         # resume facts for the About page / timeline
+├── ui/                     # design system
+│   ├── theme.py            #   colour, font and chart tokens
+│   ├── styles.py           #   global CSS for every Streamlit widget
+│   ├── animations.py       #   animated particle-network background
+│   ├── components.py       #   headers, pills, chips, avatar
+│   ├── cards.py            #   glass info / status / list cards
+│   ├── charts.py           #   Plotly charts (ranked bars, career timeline)
+│   └── sidebar.py          #   branded navigation + profile
+├── views/                  # pages: chat.py, dashboard.py, about.py
 ├── requirements.txt
-├── .env.example
+├── .gitignore
 ├── .streamlit/
-│   └── config.toml
+│   ├── config.toml
+│   └── secrets.toml.example
 ├── vrushank_image.jpg
 └── README.md
 ```
@@ -67,14 +80,23 @@ vrushank-rag-chatbot/
 
 ---
 
-## 🔑 Environment Variables
+## 🔑 Secrets
 
-Create a `.env` file in the root directory:
+The app reads its credentials from Streamlit secrets. Copy the example file and fill it in:
 
+```bash
+cp .streamlit/secrets.toml.example .streamlit/secrets.toml
 ```
-groq_api=your_groq_api_key
-mongo_db=your_mongodb_connection_string
+
+```toml
+groq_api = "your_groq_api_key"
+mongo_db = "your_mongodb_connection_string"
+# optional (defaults shown):
+# mongo_db_name = "sample_mflix"
+# mongo_collection = "personalpdf"
 ```
+
+`.streamlit/secrets.toml` is git-ignored — never commit it. On Streamlit Cloud, paste the same values into **App settings → Secrets**.
 
 ---
 
@@ -125,8 +147,8 @@ streamlit run streamlit_runner.py
 
 ## ⚠️ Notes
 
-- Ensure `.env` variables are properly set  
-- MongoDB cluster must support vector search  
+- Ensure `.streamlit/secrets.toml` is set up (see above)  
+- MongoDB cluster must support vector search, with an index named `vector_index`  
 - Groq API key is required  
 
 ---
@@ -134,7 +156,6 @@ streamlit run streamlit_runner.py
 ## 🔮 Future Enhancements
 
 - 📄 PDF/document upload support  
-- 🧠 Conversation memory  
 - 🌐 Deployment (AWS / Streamlit Cloud)  
 - 🔐 Authentication system  
 
